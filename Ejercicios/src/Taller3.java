@@ -4,43 +4,49 @@ import javax.swing.JOptionPane;
 public class Taller3 {
 
     public static void main(String[] args) {
-        //ejercicio1();
+        ejercicio1();
         //ejercicio2();
-        ejercicio3();
+        //ejercicio3();
+        //prueba();
+       
     }
 
+    
+    /*public static void prueba() {//Cuantas posibilidades hay de botones
+        String[] opciones = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","q","t","u","w","x","y","z"};
+        double x = JOptionPane.showOptionDialog(null, "seleccione", "titulo", 1, JOptionPane.INFORMATION_MESSAGE, null, opciones, 0);
+        String[] input = {"a","b};
+        double x = JOptionPane.showOptionDialog(null, "seleccione", "titulo", 1, JOptionPane.INFORMATION_MESSAGE, null, opciones, 0);
+        */
+        
+    }
     public static void ejercicio1() {
-        int opcion = 0;
-        while (opcion != 3) {
-            String input;
-            input = JOptionPane.showInputDialog("""
-                                            Seleccione una opcion:
-                                            1 - Saludar 
-                                            2 - Despedirse
-                                            3 - Salir""");
-
-            if (input == null) {
+        int opcion = -1;
+        String[] opciones = {"Saludar", "Despedirse", "Salir"};
+        while (opcion != 2) {
+            opcion = JOptionPane.showOptionDialog(
+                    null,
+                    "Seleccione una opción:",
+                    "Menú de Opciones",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    opciones,
+                    opciones[0]
+            );
+            if (opcion == -1){
                 break;
             }
-
-            try {
-                opcion = Integer.parseInt(input);
-
-                switch (opcion) {
-                    case 1 ->
-                        JOptionPane.showMessageDialog(null, "Holaaa  :)");
-                    case 2 ->
-                        JOptionPane.showMessageDialog(null, "Adiooos :(");
-                    case 3 ->
-                        JOptionPane.showMessageDialog(null, "Saliendo del programa...");
-                    default ->
-                        JOptionPane.showMessageDialog(null, "Opción no válida, intente nuevamente.");
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Debe ingresar un número válido.");
+            switch (opcion){
+                case 0 -> JOptionPane.showMessageDialog(null, "Holaaa :)");
+                case 1 -> JOptionPane.showMessageDialog(null, "Adios :(");
+                case 2 -> JOptionPane.showMessageDialog(null, "Saliendo . . .");
+                default -> JOptionPane.showMessageDialog(null, "Opcion no valida intente de nuevo");
+                    
             }
         }
     }
+
 
     public static void ejercicio2() {
         int opcion = 0;
@@ -213,5 +219,5 @@ public class Taller3 {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un número válido.");
             }
         }
-    }
 }
+
