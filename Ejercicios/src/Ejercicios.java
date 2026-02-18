@@ -1,11 +1,12 @@
 
+/*
 /**
  *
  * @author Jorge Olarte
  */
 import javax.swing.JOptionPane;
 
-public class Ejercicios {
+//public class Ejercicios {
 
     /*public static void main(String[] args) {  //---------------Primer taller para revisar o usar eliminar el comentario---------------
         //sumanumeros();
@@ -120,7 +121,6 @@ public class Ejercicios {
 //---------------Segundo taller---------------    
     public static void main(String[] args) {
         //Primerpunto();
-<<<<<<< HEAD
         //Segundopunto();
         //Tercerpunto();  
         //Puntocuatro();
@@ -231,12 +231,12 @@ public class Ejercicios {
                 + "\nValor a pagar: $" + valorPagar);
 =======
         Segundopunto();
->>>>>>> 2436e1ed4745f18b79aa4109c7f678a33e67107d
+
 
     }
 //Si el numero es multiplo de 3 y esta entre 100 y 200
 
-<<<<<<< HEAD
+
 //Halla el mayor de tres números y mostrar los tres organizados de menor a mayor.
     public static void Puntocuatro() {
         double num1 = Double.parseDouble(
@@ -346,7 +346,7 @@ public class Ejercicios {
                 "El día siguiente es: " +
                 dia + "/" + mes + "/" + año);
     }
-=======
+
     public static void Primerpunto() {
 
         JOptionPane.showMessageDialog(null, "Determina si el numero ingresado a continuacion es digito de 3 y esta en el rango [100 y 200] ", "Digito de 3 y entre 100-200", 1);
@@ -433,6 +433,9 @@ public class Ejercicios {
 //Solicita el valor del producto, el valor del descuento y calcula el valor a pagar.
     public static void ejercicio3() {
 
->>>>>>> 2436e1ed4745f18b79aa4109c7f678a33e67107d
+
     }
 }
+
+
+//
