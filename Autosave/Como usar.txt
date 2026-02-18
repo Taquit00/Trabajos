@@ -1,0 +1,3 @@
+1. Modificar directorio segun pc
+2. Agregar comentario
+3. Enter
