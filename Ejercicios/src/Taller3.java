@@ -2,13 +2,12 @@
 import javax.swing.JOptionPane;
 
 public class Taller3 {
-
     public static void main(String[] args) {
         ejercicio1();
-        //ejercicio2();
-        //ejercicio3();
-        //prueba();
-       
+        ejercicio2();
+        ejercicio3();
+        ejercicio4();
+        //prueba();  
     }
 
     
@@ -19,7 +18,7 @@ public class Taller3 {
         double x = JOptionPane.showOptionDialog(null, "seleccione", "titulo", 1, JOptionPane.INFORMATION_MESSAGE, null, opciones, 0);
         */
         
-    }
+    
     public static void ejercicio1() {
         int opcion = -1;
         String[] opciones = {"Saludar", "Despedirse", "Salir"};
@@ -218,6 +217,93 @@ public class Taller3 {
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un número válido.");
             }
+    }
+}
+    public static void ejercicio4(){
+
+        String[] nombres = new String[100];
+        String[] sexos = new String[100];
+
+        String[] hombres = new String[100];
+        String[] mujeres = new String[100];
+
+        int contador = 0;
+        int contadorH = 0;
+        int contadorM = 0;
+
+        String[] menu = {"Agregar persona", "Mostrar resultados", "Salir"};
+        int opcion = 0;
+
+        while (opcion != 2) {
+
+            opcion = JOptionPane.showOptionDialog(
+                    null,
+                    "Seleccione una opción",
+                    "Menú",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    null,
+                    menu,
+                    menu[0]
+            );
+
+            if (opcion == 0) {
+
+                String nombre = JOptionPane.showInputDialog("Ingrese el nombre:");
+                String sexo = JOptionPane.showInputDialog("Ingrese el sexo (f/m):");
+
+                if (nombre != null && sexo != null) {
+                    nombres[contador] = nombre;
+                    sexos[contador] = sexo.toLowerCase();//para convertir minisculas por si se usa M m N n
+                    contador++;
+                }
+
+            } else if (opcion == 1) {
+
+                contadorH = 0;
+                contadorM = 0;
+
+                for (int i = 0; i < contador; i++) {
+
+                    if (sexos[i].equals("m")) {
+                        hombres[contadorH] = nombres[i];
+                        contadorH++;
+                    } else if (sexos[i].equals("f")) {
+                        mujeres[contadorM] = nombres[i];
+                        contadorM++;
+                    }
+                } 
+
+                String listaH = ""; 
+                String listaM = "";
+
+                for (int i = 0; i < contadorH; i++) {
+                    listaH += hombres[i] + "\n";
+                }
+
+                for (int i = 0; i < contadorM; i++) {
+                    listaM += mujeres[i] + "\n";
+                }
+
+                JOptionPane.showMessageDialog(null,
+                        "Hombres:\n" + listaH +
+                        "\nMujeres:\n" + listaM);
+            }
         }
+    }
+}
+    
+    
+        
+    
+        
+                
+                
+            
+        
+
+
+
 }
 
+    
