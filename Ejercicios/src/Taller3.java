@@ -104,10 +104,10 @@ public class Taller3 {
 
 
     public static void ejercicio3() {
-        int maxEstudiantes = 100; // Tamaño máximo del arreglo
+        int maxEstudiantes = 100; 
         String[] nombres = new String[maxEstudiantes];
-        double[][] notas = new double[maxEstudiantes][3]; // 0: Matemáticas, 1: Inglés, 2: Español
-        int contador = 0; // Contador de estudiantes registrados
+        double[][] notas = new double[maxEstudiantes][3]; 
+        int contador = 0; 
         int opcion = 0;
 
         while (opcion != 5) {
@@ -120,7 +120,7 @@ public class Taller3 {
                     "5 - Salir"
             );
 
-            if (input == null) break; // Si presiona Cancelar
+            if (input == null) break; 
 
             try {
                 opcion = Integer.parseInt(input);
@@ -141,12 +141,12 @@ public class Taller3 {
                         notas[contador][0] = mat;
                         notas[contador][1] = ing;
                         notas[contador][2] = esp;
-                        contador++; // Aumenta el contador
+                        contador++; 
 
                         JOptionPane.showMessageDialog(null, "Estudiante registrado correctamente.");
                         break;
 
-                    case 2: // Promedio por materia
+                    case 2: 
                         if (contador == 0) {
                             JOptionPane.showMessageDialog(null, "No hay estudiantes registrados.");
                             break;
@@ -167,7 +167,7 @@ public class Taller3 {
                         );
                         break;
 
-                    case 3: // Promedio total del curso
+                    case 3: 
                         if (contador == 0) {
                             JOptionPane.showMessageDialog(null, "No hay estudiantes registrados.");
                             break;
@@ -182,7 +182,7 @@ public class Taller3 {
                         JOptionPane.showMessageDialog(null, "Promedio total del curso: " + promedioTotal);
                         break;
 
-                    case 4: // Mostrar aprobados y reprobados
+                    case 4: 
                         if (contador == 0) {
                             JOptionPane.showMessageDialog(null, "No hay estudiantes registrados.");
                             break;
@@ -205,7 +205,7 @@ public class Taller3 {
                         );
                         break;
 
-                    case 5: // Salir
+                    case 5: 
                         JOptionPane.showMessageDialog(null, "Saliendo del programa...");
                         break;
 
