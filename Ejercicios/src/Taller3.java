@@ -9,14 +9,6 @@ public class Taller3 {
         ejercicio4();
         //prueba();  
     }
-
-    
-    /*public static void prueba() {//Cuantas posibilidades hay de botones
-        String[] opciones = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","q","t","u","w","x","y","z"};
-        double x = JOptionPane.showOptionDialog(null, "seleccione", "titulo", 1, JOptionPane.INFORMATION_MESSAGE, null, opciones, 0);
-        String[] input = {"a","b};
-        double x = JOptionPane.showOptionDialog(null, "seleccione", "titulo", 1, JOptionPane.INFORMATION_MESSAGE, null, opciones, 0);
-        */
         
     
     public static void ejercicio1() {
@@ -126,7 +118,7 @@ public class Taller3 {
                 opcion = Integer.parseInt(input);
 
                 switch (opcion) {
-                    case 1: // Registrar notas
+                    case 1: 
                         if (contador >= maxEstudiantes) {
                             JOptionPane.showMessageDialog(null, "Se ha alcanzado el máximo de estudiantes.");
                             break;
@@ -304,6 +296,6 @@ public class Taller3 {
 
 
 
-}
+
 
     
