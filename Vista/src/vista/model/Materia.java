@@ -1,19 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package vista.model;
-
 public class Materia {
-
+    private int id;
     private String nombre;
-    private double promedio;
+    private int creditos;
+    private Profesor profesor;
 
-    public Materia(String nombre, double promedio) {
+    public Materia(int id, String nombre, int creditos, Profesor profesor) {
+        this.id = id;
         this.nombre = nombre;
-        this.promedio = promedio;
+        this.creditos = creditos;
+        this.profesor = profesor;
     }
 
+    public int getId() { return id; }
     public String getNombre() { return nombre; }
-    public double getPromedio() { return promedio; }
+    public int getCreditos() { return creditos; }
+    public Profesor getProfesor() { return profesor; }
+
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setCreditos(int creditos) { this.creditos = creditos; }
+    public void setProfesor(Profesor profesor) { this.profesor = profesor; }
 }

@@ -1,35 +1,68 @@
 package vista.model;
 
+
 import java.util.ArrayList;
-//DATA ACCES OBJECT
+import java.util.List;
+import vista.model.Estudiante;
+
+/**
+ *
+ * @author Programer
+ */
 public class EstudianteDAO {
+    
+    
+   //"base de datos" en memoria. 
+    // Es static para que los datos se mantengan mientras la App esté abierta.
+    private static List<Estudiante> listaEstudiantes = new ArrayList<>();
 
-    private ArrayList<Estudiante> lista = new ArrayList<>();
-
-    public void guardar(Estudiante e) {
-        lista.add(e);
+    // MÉTODO: CREATE (Registrar)
+    public boolean guardar(Estudiante est) {
+        try {
+            return listaEstudiantes.add(est);
+           
+        } catch (Exception e) {
+            System.err.println("Error al guardar: " + e.getMessage());
+            return false;
+        }
     }
 
-    public Estudiante buscar(String id) {
-        for (Estudiante e : lista) {
-            if (e.getId().equals(id)) return e;
+    // MÉTODO: READ (Consultar todos)
+    public List<Estudiante> consultarTodos() {
+        return listaEstudiantes;
+    }
+
+    // MÉTODO: DELETE (Eliminar por documento)
+    public boolean eliminar(String documento) {
+        for (int i = 0; i < listaEstudiantes.size(); i++) {
+            if (listaEstudiantes.get(i).getId().equals(documento)) {
+                listaEstudiantes.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // MÉTODO: READ (Buscar uno solo por documento)
+    public Estudiante buscarPorDocumento(String documento) {
+        for (Estudiante est : listaEstudiantes) {
+            if (est.getId().equals(documento)) {
+                return est;
+            }
         }
         return null;
     }
-
-    public void modificar(Estudiante est) {
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getId().equals(est.getId())) {
-                lista.set(i, est);
-            }
+    
+    public boolean actualizarDatos(Estudiante estActualizado) {
+    for (int i = 0; i < listaEstudiantes.size(); i++) {
+        // Buscamos al estudiante por su documento
+        if (listaEstudiantes.get(i).getId().equals(estActualizado.getId())) {
+            
+            // Reemplazamos el objeto viejo por el nuevo en esa misma posición
+            listaEstudiantes.set(i, estActualizado);
+            return true; // Actualización exitosa
         }
     }
-
-    public void eliminar(String id) {
-        lista.removeIf(e -> e.getId().equals(id));
-    }
-
-    public ArrayList<Estudiante> listar() {
-        return lista;
+    return false; // No se encontró el estudiante para actualizar
     }
 }

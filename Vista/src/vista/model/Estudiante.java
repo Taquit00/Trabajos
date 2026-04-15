@@ -1,29 +1,60 @@
 package vista.model;
 
-import java.util.ArrayList;
 
 public class Estudiante {
+    
+    private String id; 
+    private String nombre;
+    private String apellido;
+    private double promedio;
 
-    private String id, nombre, apellido;
-    private ArrayList<Materia> materias;
+    public Estudiante() {
+    }
 
-    public Estudiante(String id, String nombre, String apellido) {
+    public Estudiante(String id, String nombre, String apellido, double promedio) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.materias = new ArrayList<>();
+        this.promedio = promedio;
     }
 
-    public Estudiante(String id, String nombre, String apellido, double promedio, Profesor prof) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getId() {
+        return id;
     }
 
-    public void agregarMateria(Materia m) {
-        materias.add(m);
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getId() { return id; }
-    public String getNombre() { return nombre; }
-    public String getApellido() { return apellido; }
-    public ArrayList<Materia> getMaterias() { return materias; }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public double getPromedio() {
+        return promedio;
+    }
+
+    public void setPromedio(double promedio) {
+        this.promedio = promedio;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", promedio=" + promedio + '}';
+    }
+    
+    
+    
 }

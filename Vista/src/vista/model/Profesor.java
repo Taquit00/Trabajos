@@ -1,18 +1,22 @@
-package vista.model;
+
+import java.util.List;
+
 
 public class Profesor {
-
-    private String id;
+    private final int id;
     private String nombre;
-    private String materia;
+    private List<Materia> materias;
 
-    public Profesor(String id, String nombre, String materia) {
+    public Profesor(int id, String nombre, List<Materia> materias) {
         this.id = id;
         this.nombre = nombre;
-        this.materia = materia;
+        this.materias = materias;
     }
 
-    public String getId() { return id; }
+    public int getId() { return id; }
     public String getNombre() { return nombre; }
-    public String getMateria() { return materia; }
+    public List<Materia> getMaterias() { return materias; }
+
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setMaterias(List<Materia> materias) { this.materias = materias; }
 }
