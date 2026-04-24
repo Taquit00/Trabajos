@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+
 /**
  *
  * @author Programer
@@ -17,10 +18,12 @@ public class VEstudiante1 extends javax.swing.JFrame {
     /**
      * Creates new form VEstudiante
      */
-    public VEstudiante1() {
-        initComponents();
-    }
-
+    private Principal menu;
+    
+    public VEstudiante1(Principal menu) {
+    this.menu = menu;
+    initComponents();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,16 +72,15 @@ public class VEstudiante1 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
-        txtPromedio = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEstudiantes = new javax.swing.JTable();
@@ -398,7 +400,7 @@ public class VEstudiante1 extends javax.swing.JFrame {
                         .addGap(72, 72, 72))))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -408,17 +410,9 @@ public class VEstudiante1 extends javax.swing.JFrame {
 
         jLabel3.setText("Apellido:");
 
-        jLabel4.setText("Promedio:");
-
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
-            }
-        });
-
-        txtPromedio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPromedioActionPerformed(evt);
             }
         });
 
@@ -442,6 +436,13 @@ public class VEstudiante1 extends javax.swing.JFrame {
         jLabel14.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jLabel14.setMaximumSize(new java.awt.Dimension(101, 20));
 
+        btnVolver.setText("Volver al menu");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -461,22 +462,24 @@ public class VEstudiante1 extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEliminar))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
+                                .addGap(45, 45, 45)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(44, 44, 44)
                                 .addComponent(btnBuscar)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(btnVolver)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,16 +498,14 @@ public class VEstudiante1 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(92, 92, 92))
         );
 
         tblEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
@@ -515,10 +516,24 @@ public class VEstudiante1 extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Promedio"
+                "ID", "Nombre", "Apellido", "Materias"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblEstudiantes);
+        if (tblEstudiantes.getColumnModel().getColumnCount() > 0) {
+            tblEstudiantes.getColumnModel().getColumn(0).setResizable(false);
+            tblEstudiantes.getColumnModel().getColumn(1).setResizable(false);
+            tblEstudiantes.getColumnModel().getColumn(2).setResizable(false);
+            tblEstudiantes.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -573,10 +588,6 @@ public class VEstudiante1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPromedioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPromedioActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -629,6 +640,15 @@ public class VEstudiante1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrar3ActionPerformed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+
+    menu.setVisible(true);
+    menu.setLocationRelativeTo(null);
+    this.dispose();
+
+        
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -660,7 +680,7 @@ public class VEstudiante1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VEstudiante1().setVisible(true);
+
             }
         });
     }
@@ -729,13 +749,15 @@ public class VEstudiante1 extends javax.swing.JFrame {
         this.txtNombre = txtNombre;
     }
 
-    public JTextField getTxtPromedio() {
-        return txtPromedio;
+    public JButton getBtnVolver() {
+        return btnVolver;
     }
 
-    public void setTxtPromedio(JTextField txtPromedio) {
-        this.txtPromedio = txtPromedio;
+    public void setBtnVolver(JButton btnVolver) {
+        this.btnVolver = btnVolver;
     }
+    
+    
 
     
     
@@ -755,6 +777,7 @@ public class VEstudiante1 extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar1;
     private javax.swing.JButton btnRegistrar2;
     private javax.swing.JButton btnRegistrar3;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
@@ -765,7 +788,6 @@ public class VEstudiante1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -792,6 +814,5 @@ public class VEstudiante1 extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre1;
     private javax.swing.JTextField txtNombre2;
     private javax.swing.JTextField txtProfesor;
-    private javax.swing.JTextField txtPromedio;
     // End of variables declaration//GEN-END:variables
 }

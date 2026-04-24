@@ -1,21 +1,30 @@
 package vista.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Estudiante {
     
     private String id; 
     private String nombre;
     private String apellido;
-    private double promedio;
-
+    private List<Materia> materias;
     public Estudiante() {
     }
+    public void agregarMateria(Materia m){
+    materias.add(m);
+}
 
-    public Estudiante(String id, String nombre, String apellido, double promedio) {
+    public List<Materia> getMaterias(){
+    return materias;
+    }
+    
+    public Estudiante(String id, String nombre, String apellido) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.promedio = promedio;
+        this.materias = new ArrayList<>();
     }
 
     public String getId() {
@@ -42,18 +51,23 @@ public class Estudiante {
         this.apellido = apellido;
     }
 
-    public double getPromedio() {
-        return promedio;
+    public List<Materia> getMaterias() {
+        return materias;
     }
 
-    public void setPromedio(double promedio) {
-        this.promedio = promedio;
+    public void setMaterias(List<Materia> materias) {
+        this.materias = materias;
     }
+    
 
     @Override
     public String toString() {
-        return "Estudiante{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", promedio=" + promedio + '}';
+        return "Estudiante{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + '}';
     }
+    
+
+
+    
     
     
     

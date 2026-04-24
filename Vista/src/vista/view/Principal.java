@@ -5,6 +5,8 @@
 package vista.view;
 
 import static vista.view.ScreenManager.abrirEstudiantes;
+import static vista.view.ScreenManager.abrirMaterias;
+import static vista.view.ScreenManager.abrirProfesores;
 
 /**
  *
@@ -15,7 +17,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal(){
        initComponents();
     }
-    
+    private Principal menu;
    
 
 
@@ -33,10 +35,18 @@ public class Principal extends javax.swing.JFrame {
         btnEstudiantePrin = new javax.swing.JButton();
         bntSALIR = new javax.swing.JButton();
         btnProfesorPrin = new javax.swing.JButton();
-        btnMateriasPrin = new javax.swing.JButton();
+        btnMatricular = new javax.swing.JButton();
+        btnMaterias = new javax.swing.JButton();
+        btnAsignarM = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         jLabel1.setText("Registro universidad 0.1");
@@ -53,8 +63,28 @@ public class Principal extends javax.swing.JFrame {
         btnProfesorPrin.setText("Profesores");
         btnProfesorPrin.addActionListener(this::btnProfesorPrinActionPerformed);
 
-        btnMateriasPrin.setText("Materias");
-        btnMateriasPrin.addActionListener(this::btnMateriasPrinActionPerformed);
+        btnMatricular.setText("Matricular Estudiante");
+        btnMatricular.addActionListener(this::btnMatricularActionPerformed);
+
+        btnMaterias.setText("Materias");
+        btnMaterias.addActionListener(this::btnMateriasActionPerformed);
+
+        btnAsignarM.setText("Asignar Profesor");
+        btnAsignarM.addActionListener(this::btnAsignarMActionPerformed);
+
+        jPanel1.setBackground(new java.awt.Color(51, 255, 204));
+        jPanel1.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 96, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 65, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,40 +100,54 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(69, 69, 69))))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bntSALIR)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMateriasPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProfesorPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEstudiantePrin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bntSALIR)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnProfesorPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEstudiantePrin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAsignarM, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEstudiantePrin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(btnProfesorPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnMateriasPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(bntSALIR)
-                .addGap(17, 17, 17))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEstudiantePrin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnProfesorPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAsignarM, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(bntSALIR)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEstudiantePrinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiantePrinActionPerformed
-     abrirEstudiantes();
+     ScreenManager.abrirEstudiantes(this);
     }//GEN-LAST:event_btnEstudiantePrinActionPerformed
 
     private void bntSALIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSALIRActionPerformed
@@ -111,12 +155,24 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bntSALIRActionPerformed
 
     private void btnProfesorPrinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfesorPrinActionPerformed
-        new VProfesores().setVisible(true);
+     ScreenManager.abrirProfesores(this);
     }//GEN-LAST:event_btnProfesorPrinActionPerformed
 
-    private void btnMateriasPrinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriasPrinActionPerformed
-        new VMaterias().setVisible(true);
-    }//GEN-LAST:event_btnMateriasPrinActionPerformed
+    private void btnMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatricularActionPerformed
+     ScreenManager.abrirMatriculas(this);
+    }//GEN-LAST:event_btnMatricularActionPerformed
+
+    private void btnMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriasActionPerformed
+     ScreenManager.abrirMaterias(this);
+    }//GEN-LAST:event_btnMateriasActionPerformed
+
+    private void btnAsignarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAsignarMActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -145,11 +201,14 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntSALIR;
+    private javax.swing.JButton btnAsignarM;
     private javax.swing.JButton btnEstudiantePrin;
-    private javax.swing.JButton btnMateriasPrin;
+    private javax.swing.JButton btnMaterias;
+    private javax.swing.JButton btnMatricular;
     private javax.swing.JButton btnProfesorPrin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
         

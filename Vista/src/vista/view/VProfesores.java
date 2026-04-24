@@ -5,27 +5,20 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-    void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
-    void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+public class VProfesores extends javax.swing.JFrame {
 
-
-
-
-public class VEstudiante extends javax.swing.JFrame {
-
-    public static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VEstudiante.class.getName());
+    public static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VProfesores.class.getName());
 
     /**
      * Creates new form VEstudiante
      */
-    public VEstudiante() {
+    public VProfesores(Principal menu) {
+        this.menu = menu;
         initComponents();
     }
+    private Principal menu;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,27 +29,27 @@ public class VEstudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtId = new javax.swing.JTextField();
+        txtIdProf = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        txtNombreProf = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
-        btnRegistrar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        txtApellidoProf = new javax.swing.JTextField();
+        btnBuscarProf = new javax.swing.JButton();
+        btnRegistrarProf = new javax.swing.JButton();
+        btnModificarProf = new javax.swing.JButton();
+        btnEliminarProf = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaProf = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        btnRegistrar1 = new javax.swing.JButton();
+        btnVolverProf = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro Estudiantil");
         setBackground(new java.awt.Color(0, 0, 153));
 
-        txtId.addActionListener(this::txtIdActionPerformed);
+        txtIdProf.addActionListener(this::txtIdProfActionPerformed);
 
         jLabel1.setText("ID: ");
 
@@ -64,18 +57,18 @@ public class VEstudiante extends javax.swing.JFrame {
 
         jLabel3.setText("Apellido: ");
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
+        btnBuscarProf.setText("Buscar");
+        btnBuscarProf.addActionListener(this::btnBuscarProfActionPerformed);
 
-        btnRegistrar.setText("Registrar");
+        btnRegistrarProf.setText("Registrar");
 
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(this::btnModificarActionPerformed);
+        btnModificarProf.setText("Modificar");
+        btnModificarProf.addActionListener(this::btnModificarProfActionPerformed);
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
+        btnEliminarProf.setText("Eliminar");
+        btnEliminarProf.addActionListener(this::btnEliminarProfActionPerformed);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaProf.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -94,11 +87,11 @@ public class VEstudiante extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(TablaProf);
+        if (TablaProf.getColumnModel().getColumnCount() > 0) {
+            TablaProf.getColumnModel().getColumn(0).setResizable(false);
+            TablaProf.getColumnModel().getColumn(1).setResizable(false);
+            TablaProf.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jLabel6.setBackground(new java.awt.Color(255, 0, 0));
@@ -108,8 +101,8 @@ public class VEstudiante extends javax.swing.JFrame {
         jLabel6.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jLabel6.setMaximumSize(new java.awt.Dimension(101, 20));
 
-        btnRegistrar1.setText("Volver al menu");
-        btnRegistrar1.addActionListener(this::btnRegistrar1ActionPerformed);
+        btnVolverProf.setText("Volver al menu");
+        btnVolverProf.addActionListener(this::btnVolverProfActionPerformed);
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,27 +119,27 @@ public class VEstudiante extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtApellidoProf, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtNombreProf, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtIdProf, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(37, 37, 37)
-                                .addComponent(btnBuscar))
+                                .addComponent(btnBuscarProf))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnRegistrar1)
+                                    .addComponent(btnVolverProf)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRegistrar)
+                                        .addComponent(btnRegistrarProf)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnModificar)
+                                        .addComponent(btnModificarProf)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnEliminar)))))
+                                        .addComponent(btnEliminarProf)))))
                         .addGap(38, 38, 38)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -166,54 +159,57 @@ public class VEstudiante extends javax.swing.JFrame {
                         .addContainerGap(28, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(btnBuscar))
+                            .addComponent(btnBuscarProf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellidoProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrar)
-                            .addComponent(btnModificar)
-                            .addComponent(btnEliminar))
+                            .addComponent(btnRegistrarProf)
+                            .addComponent(btnModificarProf)
+                            .addComponent(btnEliminarProf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegistrar1)
+                        .addComponent(btnVolverProf)
                         .addGap(72, 72, 72))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    private void btnBuscarProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
+    }//GEN-LAST:event_btnBuscarProfActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void btnModificarProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarActionPerformed
+    }//GEN-LAST:event_btnModificarProfActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnEliminarProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnEliminarProfActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+    private void txtIdProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+    }//GEN-LAST:event_txtIdProfActionPerformed
 
-    private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrar1ActionPerformed
+    private void btnVolverProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverProfActionPerformed
+    menu.setVisible(true);
+    menu.setLocationRelativeTo(null);
+    this.dispose();
+    }//GEN-LAST:event_btnVolverProfActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -232,65 +228,97 @@ public class VEstudiante extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       
-    }
-    public JTextField getTxtNombre() {
-        return txtNombre;
-    }
-
-    public JTextField getTxtApellido() {
-        return txtApellido;
-    }
-    
-    public JTextField getTxtProfesor(){
-        return txtProfesor;
-    }
-    public JTextField getTxtPromedio() {
-        return txtPromedio;
-    }
-
-    public JButton getBtnRegistrar() {
-        return btnRegistrar;
-    }
-
-    public JButton getBtnBuscar() {
-        return btnBuscar;
-    }
-
-    public JButton getBtnModificar() {
-        return btnModificar;
-    }
-
-    public JButton getBtnEliminar() {
-        return btnEliminar;
-    }
-
-    public JTable getTabla() {
-        return jTable1;
-    }
-    
-    public JButton getBtnAgregarProfesor() {
-    return bntAgregarProfesor;
-}
+   
     
 }
+    public JTable getTablaProf() {
+        return TablaProf;
+    }
+
+    public void setTablaProf(JTable TablaProf) {
+        this.TablaProf = TablaProf;
+    }
+
+    public JButton getBtnBuscarProf() {
+        return btnBuscarProf;
+    }
+
+    public void setBtnBuscarProf(JButton btnBuscarProf) {
+        this.btnBuscarProf = btnBuscarProf;
+    }
+
+    public JButton getBtnEliminarProf() {
+        return btnEliminarProf;
+    }
+
+    public void setBtnEliminarProf(JButton btnEliminarProf) {
+        this.btnEliminarProf = btnEliminarProf;
+    }
+
+    public JButton getBtnModificarProf() {
+        return btnModificarProf;
+    }
+
+    public void setBtnModificarProf(JButton btnModificarProf) {
+        this.btnModificarProf = btnModificarProf;
+    }
+
+    public JButton getBtnRegistrarProf() {
+        return btnRegistrarProf;
+    }
+
+    public void setBtnRegistrarProf(JButton btnRegistrarProf) {
+        this.btnRegistrarProf = btnRegistrarProf;
+    }
+
+    public JButton getBtnVolverProf() {
+        return btnVolverProf;
+    }
+
+    public void setBtnVolverProf(JButton btnVolverProf) {
+        this.btnVolverProf = btnVolverProf;
+    }
+
+    public JTextField getTxtApellidoProf() {
+        return txtApellidoProf;
+    }
+
+    public void setTxtApellidoProf(JTextField txtApellidoProf) {
+        this.txtApellidoProf = txtApellidoProf;
+    }
+
+    public JTextField getTxtIdProf() {
+        return txtIdProf;
+    }
+
+    public void setTxtIdProf(JTextField txtIdProf) {
+        this.txtIdProf = txtIdProf;
+    }
+
+    public JTextField getTxtNombreProf() {
+        return txtNombreProf;
+    }
+
+    public void setTxtNombreProf(JTextField txtNombreProf) {
+        this.txtNombreProf = txtNombreProf;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnRegistrar1;
+    private javax.swing.JTable TablaProf;
+    private javax.swing.JButton btnBuscarProf;
+    private javax.swing.JButton btnEliminarProf;
+    private javax.swing.JButton btnModificarProf;
+    private javax.swing.JButton btnRegistrarProf;
+    private javax.swing.JButton btnVolverProf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtApellidoProf;
+    private javax.swing.JTextField txtIdProf;
+    private javax.swing.JTextField txtNombreProf;
     // End of variables declaration//GEN-END:variables
 
-
+}
 

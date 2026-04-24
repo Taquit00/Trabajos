@@ -2,27 +2,26 @@ package vista.view;
 
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-    void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 
 
-
-public class VEstudiante extends javax.swing.JFrame {
-
-    public static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VEstudiante.class.getName());
-
+public class VMaterias extends javax.swing.JFrame {
+  
     /**
      * Creates new form VEstudiante
      */
-    public VEstudiante() {
+    private Principal menu;
+    
+    public VMaterias(Principal menu) {
+        this.menu = menu;
         initComponents();
     }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,29 +31,27 @@ public class VEstudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtId = new javax.swing.JTextField();
+        txtCodigoMate = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        txtMateria = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        btnBuscar = new javax.swing.JButton();
-        btnRegistrar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        txtCreditos = new javax.swing.JTextField();
+        btnBuscarMate = new javax.swing.JButton();
+        btnRegistrarMate = new javax.swing.JButton();
+        btnModificarMate = new javax.swing.JButton();
+        btnEliminarMate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableMate = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        txtProfesor = new javax.swing.JTextField();
-        btnModificar1 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro Estudiantil");
         setBackground(new java.awt.Color(0, 0, 153));
 
-        txtId.addActionListener(this::txtIdActionPerformed);
+        txtCodigoMate.addActionListener(this::txtCodigoMateActionPerformed);
 
         jLabel1.setText("Codigo: ");
 
@@ -62,44 +59,42 @@ public class VEstudiante extends javax.swing.JFrame {
 
         jLabel3.setText("Creditos: ");
 
-        jLabel4.setText("Profesor ID:");
+        btnBuscarMate.setText("Buscar");
+        btnBuscarMate.addActionListener(this::btnBuscarMateActionPerformed);
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
+        btnRegistrarMate.setText("Registrar");
 
-        btnRegistrar.setText("Registrar");
+        btnModificarMate.setText("Modificar");
+        btnModificarMate.addActionListener(this::btnModificarMateActionPerformed);
 
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(this::btnModificarActionPerformed);
+        btnEliminarMate.setText("Eliminar");
+        btnEliminarMate.addActionListener(this::btnEliminarMateActionPerformed);
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Promedio"
+                "Codigo", "Materia", "Creditos"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        jTableMate.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTableMate);
+        if (jTableMate.getColumnModel().getColumnCount() > 0) {
+            jTableMate.getColumnModel().getColumn(0).setResizable(false);
+            jTableMate.getColumnModel().getColumn(1).setResizable(false);
+            jTableMate.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jLabel6.setBackground(new java.awt.Color(255, 0, 0));
@@ -109,10 +104,8 @@ public class VEstudiante extends javax.swing.JFrame {
         jLabel6.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jLabel6.setMaximumSize(new java.awt.Dimension(101, 20));
 
-        txtProfesor.addActionListener(this::txtProfesorActionPerformed);
-
-        btnModificar1.setText("Volver al menu");
-        btnModificar1.addActionListener(this::btnModificar1ActionPerformed);
+        btnVolver.setText("Volver al menu");
+        btnVolver.addActionListener(this::btnVolverActionPerformed);
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,38 +115,34 @@ public class VEstudiante extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtCodigoMate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(37, 37, 37)
-                                .addComponent(btnBuscar))
+                                .addComponent(btnBuscarMate))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
+                                .addGap(63, 63, 63)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnModificar1)
+                                    .addComponent(btnVolver)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRegistrar)
+                                        .addComponent(btnRegistrarMate)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnModificar)
+                                        .addComponent(btnModificarMate)
                                         .addGap(7, 7, 7)
-                                        .addComponent(btnEliminar)))))
+                                        .addComponent(btnEliminarMate)))))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -170,28 +159,24 @@ public class VEstudiante extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigoMate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(btnBuscar))
+                            .addComponent(btnBuscarMate))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrar)
-                            .addComponent(btnModificar)
-                            .addComponent(btnEliminar))
+                            .addComponent(btnRegistrarMate)
+                            .addComponent(btnModificarMate)
+                            .addComponent(btnEliminarMate))
                         .addGap(195, 195, 195)
-                        .addComponent(btnModificar1)
+                        .addComponent(btnVolver)
                         .addGap(48, 48, 48))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -200,29 +185,29 @@ public class VEstudiante extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    private void btnBuscarMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
+    }//GEN-LAST:event_btnBuscarMateActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void btnModificarMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarActionPerformed
+    }//GEN-LAST:event_btnModificarMateActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnEliminarMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnEliminarMateActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+    private void txtCodigoMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoMateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+    }//GEN-LAST:event_txtCodigoMateActionPerformed
 
-    private void txtProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProfesorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProfesorActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+    menu.setVisible(true);
+    menu.setLocationRelativeTo(null);
+    this.dispose();
 
-    private void btnModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificar1ActionPerformed
+        
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,67 +231,115 @@ public class VEstudiante extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       
-    }
-    public JTextField getTxtNombre() {
-        return txtNombre;
+
     }
 
-    public JTextField getTxtApellido() {
-        return txtApellido;
+    public JButton getBtnBuscarMate() {
+        return btnBuscarMate;
     }
+
+    public void setBtnBuscarMate(JButton btnBuscarMate) {
+        this.btnBuscarMate = btnBuscarMate;
+    }
+
+    public JButton getBtnEliminarMate() {
+        return btnEliminarMate;
+    }
+
+    public void setBtnEliminarMate(JButton btnEliminarMate) {
+        this.btnEliminarMate = btnEliminarMate;
+    }
+
+    public JButton getBtnModificar1() {
+        return btnVolver;
+    }
+
+    public void setBtnModificar1(JButton btnModificar1) {
+        this.btnVolver = btnModificar1;
+    }
+
+    public JButton getBtnModificarMate() {
+        return btnModificarMate;
+    }
+
+    public void setBtnModificarMate(JButton btnModificarMate) {
+        this.btnModificarMate = btnModificarMate;
+    }
+
+    public JButton getBtnRegistrarMate() {
+        return btnRegistrarMate;
+    }
+
+    public void setBtnRegistrarMate(JButton btnRegistrarMate) {
+        this.btnRegistrarMate = btnRegistrarMate;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JTable getjTableMate() {
+        return jTableMate;
+    }
+
+    public void setjTableMate(JTable jTableMate) {
+        this.jTableMate = jTableMate;
+    }
+
+    public JTextField getTxtCodigoMate() {
+        return txtCodigoMate;
+    }
+
+    public void setTxtCodigoMate(JTextField txtCodigoMate) {
+        this.txtCodigoMate = txtCodigoMate;
+    }
+
+    public JTextField getTxtCreditos() {
+        return txtCreditos;
+    }
+
+    public void setTxtCreditos(JTextField txtCreditos) {
+        this.txtCreditos = txtCreditos;
+    }
+
+    public JTextField getTxtMateria() {
+        return txtMateria;
+    }
+
+    public void setTxtMateria(JTextField txtMateria) {
+        this.txtMateria = txtMateria;
+    }
+
+
     
-    public JTextField getTxtProfesor(){
-        return txtProfesor;
-    }
-    public JTextField getTxtPromedio() {
-        return txtPromedio;
-    }
 
-    public JButton getBtnRegistrar() {
-        return btnRegistrar;
-    }
-
-    public JButton getBtnBuscar() {
-        return btnBuscar;
-    }
-
-    public JButton getBtnModificar() {
-        return btnModificar;
-    }
-
-    public JButton getBtnEliminar() {
-        return btnEliminar;
-    }
-
-    public JTable getTabla() {
-        return jTable1;
-    }
-    
-    public JButton getBtnAgregarProfesor() {
-    return bntAgregarProfesor;
-}
-    
-}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnModificar1;
-    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnBuscarMate;
+    private javax.swing.JButton btnEliminarMate;
+    private javax.swing.JButton btnModificarMate;
+    private javax.swing.JButton btnRegistrarMate;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtProfesor;
+    private javax.swing.JTable jTableMate;
+    private javax.swing.JTextField txtCodigoMate;
+    private javax.swing.JTextField txtCreditos;
+    private javax.swing.JTextField txtMateria;
     // End of variables declaration//GEN-END:variables
+
+   
+
+}
+
+
 
 
 

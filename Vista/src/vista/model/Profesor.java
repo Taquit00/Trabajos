@@ -1,22 +1,43 @@
+package vista.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
 public class Profesor {
-    private final int id;
+    private String id;
     private String nombre;
-    private List<Materia> materias;
+    private String apellido;
 
-    public Profesor(int id, String nombre, List<Materia> materias) {
+    public Profesor() {}
+    
+    private List<Materia> materias = new ArrayList<>();
+
+    public void agregarMateria(Materia m){
+    materias.add(m);
+}
+
+    public List<Materia> getMaterias(){
+    return materias;
+}
+    public Profesor(String id, String nombre, String apellido) {
         this.id = id;
         this.nombre = nombre;
-        this.materias = materias;
+        this.apellido = apellido;
     }
 
-    public int getId() { return id; }
-    public String getNombre() { return nombre; }
-    public List<Materia> getMaterias() { return materias; }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
+    public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
-    public void setMaterias(List<Materia> materias) { this.materias = materias; }
+
+    public String getApellido() { return apellido; }
+    public void setApellido(String apellido) { this.apellido = apellido; }
+
+    @Override
+    public String toString() {
+        return "Profesor{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + '}';
+    }
+    
+    
 }

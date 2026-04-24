@@ -1,25 +1,68 @@
-import java.util.*;
+package vista.model;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ *
+ * @author Programer
+ */
 public class MateriaDAO {
-    private List<Materia> lista = new ArrayList<>();
+    
+    
+   //"base de datos" en memoria. 
+    // Es static para que los datos se mantengan mientras la App esté abierta.
+    private static List<Materia> listaMateria = new ArrayList<>();
 
-    public void agregar(Materia m) { lista.add(m); }
-
-    public List<Materia> listar() { return lista; }
-
-    public void eliminar(int id) {
-        lista.removeIf(m -> m.getId() == id);
+    // MÉTODO: CREATE (Registrar)
+    public boolean guardar(Materia mat) {
+        try {
+            return listaMateria.add(mat);
+           
+        } catch (Exception e) {
+            System.err.println("Error al guardar: " + e.getMessage());
+            return false;
+        }
     }
 
-    public Materia buscar(int id) {
-        return lista.stream().filter(m -> m.getId() == id).findFirst().orElse(null);
+    // MÉTODO: READ (Consultar todos)
+    public List<Materia> consultarTodos() {
+        return listaMateria;
     }
 
-    public void actualizar(Materia nueva) {
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getId() == nueva.getId()) {
-                lista.set(i, nueva);
+    // MÉTODO: DELETE (Eliminar por documento)
+    public boolean eliminar(String documento) {
+        for (int i = 0; i < listaMateria.size(); i++) {
+            if (listaMateria.get(i).getId().equals(documento)) {
+                listaMateria.remove(i);
+                return true;
             }
         }
+        return false;
+    }
+
+    // MÉTODO: READ (Buscar uno solo por documento)
+    public Materia buscarPorDocumento(String documento) {
+        for (Materia mat : listaMateria) {
+            if (mat.getId().equals(documento)) {
+                return mat;
+            }
+        }
+        return null;
+    }
+    
+    public boolean actualizarDatos(Materia matActualizado) {
+    for (int i = 0; i < listaMateria.size(); i++) {
+        // Buscamos al estudiante por su documento
+        if (listaMateria.get(i).getId().equals(matActualizado.getId())) {
+            
+            // Reemplazamos el objeto viejo por el nuevo en esa misma posición
+            listaMateria.set(i, matActualizado);
+            return true; // Actualización exitosa
+        }
+    }
+    return false; // No se encontró el estudiante para actualizar
     }
 }

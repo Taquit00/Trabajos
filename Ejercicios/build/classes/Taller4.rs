@@ -1,3 +1,0 @@
-Persona
-Estudiante
-Taller4

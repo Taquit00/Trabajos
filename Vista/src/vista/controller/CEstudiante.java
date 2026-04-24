@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vista.model.Estudiante;
 import vista.model.EstudianteDAO;
+import vista.model.Materia;
 import vista.view.ScreenManager;
 
 import vista.view.VEstudiante1;
@@ -17,7 +18,7 @@ import vista.view.VEstudiante1;
  *
  * @author Programer
  */
-public class Controlador implements ActionListener{
+public class CEstudiante implements ActionListener{
     
     
     // Referencias a la Vista y al DAO
@@ -25,7 +26,7 @@ public class Controlador implements ActionListener{
     private EstudianteDAO dao;
 
     // El constructor une las piezas
-    public Controlador(VEstudiante1 vista, EstudianteDAO dao) {
+    public CEstudiante(VEstudiante1 vista, EstudianteDAO dao) {
         this.vista = vista;
         this.dao = dao;
 
@@ -42,7 +43,7 @@ public class Controlador implements ActionListener{
         public void windowClosing(java.awt.event.WindowEvent e) {
             // Cuando el usuario presiona la X, llamamos al manejador
             // Usamos CEstudiante.this para referirnos a este controlador
-            ScreenManager.cerrarEstudiantes(Controlador.this);
+            ScreenManager.cerrarEstudiantes(CEstudiante.this);
         }
     });
         
@@ -89,7 +90,6 @@ private void registrar() {
             // Llenamos los campos de la vista con lo que encontró el DAO
             vista.getTxtNombre().setText(est.getNombre());
             vista.getTxtApellido().setText(est.getApellido());
-            vista.getTxtPromedio().setText(String.valueOf(est.getPromedio()));
         } else {
             JOptionPane.showMessageDialog(vista, "Estudiante no encontrado.");
         }
@@ -126,26 +126,37 @@ private void registrar() {
     
     
     public void llenarTabla() {
-        //  Obtener el modelo de la tabla de la vista
-        DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblEstudiantes().getModel();
-        
-        
-        //  Limpiar la tabla para evitar datos duplicados
-        modeloTabla.setRowCount(0);
+    // Obtener el modelo de la tabla de la vista
+    DefaultTableModel modeloTabla = (DefaultTableModel) vista.getTblEstudiantes().getModel();
 
-        //  Pedir la lista de estudiantes al DAO
-        List<Estudiante> lista = dao.consultarTodos();
+    // Limpiar la tabla
+    modeloTabla.setRowCount(0);
 
-        //  Recorrer la lista y agregar cada estudiante como una fila
-        Object[] fila = new Object[4]; // 4 columnas: Doc, Nombre, Apellido, Nota
-        for (Estudiante est : lista) {
-            fila[0] = est.getId();
-            fila[1] = est.getNombre();
-            fila[2] = est.getApellido();
-            fila[3] = est.getPromedio();
-            modeloTabla.addRow(fila);
+    // Lista desde el DAO
+    List<Estudiante> lista = dao.consultarTodos();
+
+    // Ahora son 4 columnas: ID, Nombre, Apellido, Materias
+    Object[] fila = new Object[4];
+
+    for (Estudiante est : lista) {
+        fila[0] = est.getId();
+        fila[1] = est.getNombre();
+        fila[2] = est.getApellido();
+
+
+        String materias = "";
+
+        if (est.getMaterias() != null) {
+            for (Materia m : est.getMaterias()) {
+                materias += m.getNombre() + ", ";
+            }
         }
+
+        fila[3] = materias; 
+
+        modeloTabla.addRow(fila);
     }
+}
     
     
     // --- MÉTODOS AUXILIARES ---
@@ -155,8 +166,7 @@ private void registrar() {
         return new Estudiante(
             vista.getTxtId().getText(),
             vista.getTxtNombre().getText(),
-            vista.getTxtApellido().getText(),
-            Double.parseDouble(vista.getTxtPromedio().getText())
+            vista.getTxtApellido().getText()
         );
     }
 
@@ -164,7 +174,6 @@ private void registrar() {
         vista.getTxtId().setText("");
         vista.getTxtNombre().setText("");
         vista.getTxtApellido().setText("");
-        vista.getTxtPromedio().setText("");
         vista.getTxtId().requestFocus();
     }
     

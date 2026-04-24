@@ -3,8 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/UIS/Documents/NetBeansProjects/Trabajos/Vista/src/vista/view/VEstudiante1.java</file>
-            <file>file:/C:/Users/UIS/Documents/NetBeansProjects/Trabajos/Vista/src/vista/view/VProfesores.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/controller/CProfesor.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/controller/CEstudiante.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/view/ScreenManager.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/view/VProfesores.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/model/ProfesorDAO.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/model/Profesor.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/model/Estudiante.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/model/MateriaDAO.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/model/EstudianteDAO.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/view/Principal.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/view/VMaterias.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/controller/CMateria.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/model/Materia.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/Vista.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/view/Matricular.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/view/VEstudiante1.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/view/Asignar.java</file>
+            <file>file:/C:/Users/jy_ga/OneDrive/Documentos/NetBeansProjects/Trabajos/Vista/src/vista/controller/CMatricular.java</file>
         </group>
     </open-files>
 </project-private>
