@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese un número entero no negativo: ");
+
+        if (!scanner.hasNextInt()) {
+            System.out.println("Error: debe ingresar un número entero.");
+        } else {
+            int numero = scanner.nextInt();
+
+            if (numero < 0) {
+                System.out.println("el número no puede ser negativo.");
+            } else {
+                int[] residuos = new int[32];
+                int indice = 0;
+                int numdiv = numero;
+
+                if (numdiv == 0) {
+                    residuos[indice++] = 0;
+                } else {
+                    while (numdiv > 0) {
+                        residuos[indice++] = numdiv % 2;
+                        numdiv /= 2;
+                    }
+                }
+
+                System.out.print("Numero en binario: ");
+
+                for (int i = 0; i < indice; i++) {
+                    System.out.print(residuos[i] + " ");
+                }
+            }
+        }
+
+    }
+}
