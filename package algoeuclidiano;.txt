@@ -1,0 +1,49 @@
+package algoeuclidiano;
+
+import java.util.Scanner;
+
+public class AlgoEuclidiano {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese su dividendo: ");
+        int dividendo = scanner.nextInt();
+        System.out.print("Ingrese su divisor: ");
+        int divisor = scanner.nextInt();
+
+        if (dividendo < 0 || divisor < 0) {
+            System.out.println("Los números no pueden ser negativos.");
+        } else if (divisor == 0) {
+            System.out.println("El divisor no puede ser 0.");
+        } else {
+            int dividendoOriginal = dividendo;
+            int divisorOriginal = divisor;
+
+            System.out.println("Divisiones sucesivas:");
+
+            while (divisor != 0) {
+                int cociente = dividendo / divisor;
+                int residuo = dividendo % divisor;
+
+                System.out.println(
+                        dividendo + " = " + divisor + " × " + cociente + " + " + residuo
+                );
+                System.out.println("Cociente: " + cociente);
+
+                dividendo = divisor;
+                divisor = residuo;
+            }
+
+            int mcd = dividendo;
+
+            System.out.println("\nEl MCD de " + dividendoOriginal + " y "
+                    + divisorOriginal + " es: " + mcd);
+
+            if (mcd == 1) {
+                System.out.println("Los números son primos relativos.");
+            } else {
+                System.out.println("Los números no son primos relativos.");
+            }
+        }
+    }
+}
