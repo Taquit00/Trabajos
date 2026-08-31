@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+public class DecimalABinario {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese un número decimal: ");
+        int numero = sc.nextInt();
+        int original = numero;
+
+        if (numero == 0) {
+            System.out.println("Binario: 0");
+            return;
+        }
+
+        StringBuilder binario = new StringBuilder();
+
+        while (numero > 0) {
+            int residuo = numero % 2;
+            binario.insert(0, residuo); // se inserta al inicio porque se lee de abajo hacia arriba
+            numero = numero / 2;
+        }
+
+        System.out.println("El binario de " + original + " es: " + binario);
+        sc.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Factorial {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese un número: ");
+        int n = sc.nextInt();
+
+        long factorial = calcularFactorial(n);
+        System.out.println(n + "! = " + factorial);
+        sc.close();
+    }
+
+    // Versión recursiva
+    public static long calcularFactorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return n * calcularFactorial(n - 1);
+    }
+}
+
+
+import java.util.Scanner;
+
+public class MCD {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese el primer número: ");
+        int a = sc.nextInt();
+        System.out.print("Ingrese el segundo número: ");
+        int b = sc.nextInt();
+
+        int resultado = calcularMCD(a, b);
+        System.out.println("El MCD de " + a + " y " + b + " es: " + resultado);
+
+        // Si el MCD es 1, los números son primos relativos (coprimos)
+        if (resultado == 1) {
+            System.out.println(a + " y " + b + " son primos relativos (coprimos).");
+        } else {
+            System.out.println(a + " y " + b + " NO son primos relativos.");
+        }
+
+        sc.close();
+    }
+
+    // Versión recursiva del algoritmo de Euclides
+    public static int calcularMCD(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return calcularMCD(b, a % b);
+    }
+}
