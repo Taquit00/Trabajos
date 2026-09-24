@@ -1,5 +1,3 @@
-package algoeuclidiano;
-
 import java.util.Scanner;
 
 public class AlgoEuclidiano {
@@ -26,9 +24,8 @@ public class AlgoEuclidiano {
                 int residuo = dividendo % divisor;
 
                 System.out.println(
-                        dividendo + " = " + divisor + " × " + cociente + " + " + residuo
+                        dividendo + " = " + divisor + " * " + cociente + " + " + residuo
                 );
-                System.out.println("Cociente: " + cociente);
 
                 dividendo = divisor;
                 divisor = residuo;
