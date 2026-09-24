@@ -1,0 +1,213 @@
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Practica {
+
+    // =========================================================
+    // 1. BURBUJA (Bubble Sort)
+    // Compara pares de elementos adyacentes y los intercambia
+    // si están en el orden incorrecto. Se repite hasta que
+    // no haya más intercambios.
+    // Complejidad: O(n^2) en el peor y promedio caso, O(n) mejor caso
+    // Estable: Sí | En el lugar (in-place): Sí
+    // =========================================================
+    public static void burbuja(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            boolean huboIntercambio = false;
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    huboIntercambio = true;
+                }
+            }
+            // Optimización: si no hubo intercambios, ya está ordenado
+            if (!huboIntercambio) break;
+        }
+    }
+
+    // =========================================================
+    // 2. INSERCIÓN (Insertion Sort)
+    // Construye el arreglo ordenado de a un elemento a la vez,
+    // "insertando" cada nuevo elemento en la posición correcta
+    // dentro de la parte ya ordenada.
+    // Complejidad: O(n^2) peor/promedio, O(n) mejor caso (casi ordenado)
+    // Estable: Sí | En el lugar: Sí
+    // =========================================================
+    public static void insercion(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int clave = arr[i];
+            int j = i - 1;
+            // Desplazar los elementos mayores que 'clave' una posición
+            while (j >= 0 && arr[j] > clave) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = clave;
+        }
+    }
+
+    // =========================================================
+    // 3. SELECCIÓN (Selection Sort)
+    // En cada iteración busca el elemento MÍNIMO del resto del
+    // arreglo y lo coloca en su posición correcta (intercambio).
+    // Complejidad: O(n^2) SIEMPRE (peor, promedio y mejor caso)
+    // Estable: No (en su forma clásica) | En el lugar: Sí
+    // =========================================================
+    public static void seleccion(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            int indiceMinimo = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[indiceMinimo]) {
+                    indiceMinimo = j;
+                }
+            }
+            if (indiceMinimo != i) {
+                int temp = arr[i];
+                arr[i] = arr[indiceMinimo];
+                arr[indiceMinimo] = temp;
+            }
+        }
+    }
+
+    // =========================================================
+    // 4. MERGE SORT (Ordenamiento por mezcla)
+    // Divide y vencerás: divide el arreglo por la mitad
+    // recursivamente hasta tener subarreglos de 1 elemento,
+    // y luego los va mezclando (merge) en orden.
+    // Complejidad: O(n log n) SIEMPRE
+    // Estable: Sí | En el lugar: No (usa memoria auxiliar O(n))
+    // =========================================================
+    public static void mergeSort(int[] arr) {
+        if (arr.length <= 1) return;
+        mergeSort(arr, 0, arr.length - 1);
+    }
+
+    private static void mergeSort(int[] arr, int inicio, int fin) {
+        if (inicio < fin) {
+            int medio = (inicio + fin) / 2;
+            mergeSort(arr, inicio, medio);      // ordena mitad izquierda
+            mergeSort(arr, medio + 1, fin);      // ordena mitad derecha
+            mezclar(arr, inicio, medio, fin);    // combina ambas mitades
+        }
+    }
+
+    private static void mezclar(int[] arr, int inicio, int medio, int fin) {
+        int n1 = medio - inicio + 1;
+        int n2 = fin - medio;
+
+        int[] izquierda = new int[n1];
+        int[] derecha = new int[n2];
+
+        for (int i = 0; i < n1; i++) izquierda[i] = arr[inicio + i];
+        for (int j = 0; j < n2; j++) derecha[j] = arr[medio + 1 + j];
+
+        int i = 0, j = 0, k = inicio;
+        while (i < n1 && j < n2) {
+            if (izquierda[i] <= derecha[j]) {
+                arr[k] = izquierda[i];
+                i++;
+            } else {
+                arr[k] = derecha[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1) { arr[k] = izquierda[i]; i++; k++; }
+        while (j < n2) { arr[k] = derecha[j]; j++; k++; }
+    }
+
+    // =========================================================
+    // 5. QUICKSORT
+    // Divide y vencerás: elige un "pivote", reordena el arreglo
+    // de modo que los menores queden a la izquierda del pivote
+    // y los mayores a la derecha, luego ordena recursivamente
+    // cada partición.
+    // Complejidad: O(n log n) promedio, O(n^2) peor caso
+    //              (cuando el pivote siempre es el mín o el máx)
+    // Estable: No | En el lugar: Sí
+    // =========================================================
+    public static void quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    private static void quickSort(int[] arr, int inicio, int fin) {
+        if (inicio < fin) {
+            int posPivote = particionar(arr, inicio, fin);
+            quickSort(arr, inicio, posPivote - 1);
+            quickSort(arr, posPivote + 1, fin);
+        }
+    }
+
+    // Partición estilo Lomuto: usa el último elemento como pivote
+    private static int particionar(int[] arr, int inicio, int fin) {
+        int pivote = arr[fin];
+        int i = inicio - 1; // índice del último elemento menor al pivote
+
+        for (int j = inicio; j < fin; j++) {
+            if (arr[j] <= pivote) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[fin];
+        arr[fin] = temp;
+
+        return i + 1; // posición final del pivote
+    }
+
+    // =========================================================
+    // Utilidad para medir tiempo de cada algoritmo
+    // =========================================================
+    private static void medirTiempo(String nombre, Runnable algoritmo) {
+        long inicio = System.nanoTime();
+        algoritmo.run();
+        long fin = System.nanoTime();
+        double segundos = (fin - inicio) / 1_000_000_000.0;
+        System.out.printf("%-10s: %.4f segundos%n", nombre, segundos);
+    }
+
+    // =========================================================
+    // MAIN: pide cuántos números ordenar y los genera al azar
+    // entre 1 y 1,000,000
+    // =========================================================
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("¿Cuántos números deseas ordenar? ");
+        int n = scanner.nextInt();
+
+        Random rand = new Random();
+        int[] original = new int[n];
+        for (int i = 0; i < n; i++) {
+            original[i] = rand.nextInt(1_000_000) + 1; // entre 1 y 1,000,000
+        }
+
+        // Si n es pequeño, mostramos el arreglo original
+        if (n <= 20) {
+            System.out.println("Arreglo original: " + Arrays.toString(original));
+        }
+
+        System.out.println("\nOrdenando " + n + " números aleatorios (1 a 1,000,000)...\n");
+
+        final int LIMITE_LENTOS = 50_000; // a partir de aquí, O(n^2) se vuelve muy lento
+        if (n > LIMITE_LENTOS) {
+            System.out.println("(Aviso: con n > " + LIMITE_LENTOS + ", burbuja/inserción/selección");
+            System.out.println(" son O(n^2) y pueden tardar MUCHO tiempo. Se omiten aquí.)\n");
+        } else {
+            medirTiempo("Burbuja", () -> burbuja(original.clone()));
+            medirTiempo("Inserción", () -> insercion(original.clone()));
+            medirTiempo("Selección", () -> seleccion(original.clone()));
+        }
+
+        medirTiempo("MergeSort", () -> mergeSort(original.clone()));
+        medirTiempo("QuickSort", () -> quickSort(original.clone()));
+    }
+}
