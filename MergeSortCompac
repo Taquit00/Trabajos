@@ -1,0 +1,61 @@
+import java.util.Arrays;
+import java.util.Random;
+
+public class MergeSort {
+
+    public static void main(String[] args) {
+        int[] a = generar(100); // arreglo de prueba
+
+        System.out.println("Tamano del arreglo: " + a.length);
+
+        if (a.length > 100) {
+            System.out.println("Arreglo muy largo para imprimir");
+        } else {
+            System.out.println("Antes:  " + Arrays.toString(a));
+        }
+
+        // --- Contador: se guarda el instante justo antes de ordenar ---
+        long inicio = System.nanoTime();
+
+        mergeSort(a, 0, a.length - 1);
+
+        // --- Contador: se guarda el instante justo despues de ordenar ---
+        long fin = System.nanoTime();
+
+        // Se calcula la diferencia y se convierte de nanosegundos a milisegundos
+        double milisegundos = (fin - inicio) / 1_000_000.0;
+        System.out.printf("Tiempo de ordenamiento: %.4f ms%n", milisegundos);
+
+        if (a.length > 100) {
+            System.out.println("Arreglo ordenado (muy largo para imprimir)");
+        } else {
+            System.out.println("Despues: " + Arrays.toString(a));
+        }
+    }
+
+    static void mergeSort(int[] a, int izq, int der) {
+        if (izq < der) {
+            int m = izq + (der - izq) / 2;
+            mergeSort(a, izq, m);
+            mergeSort(a, m + 1, der);
+            merge(a, izq, m, der);
+        }
+    }
+
+    static void merge(int[] a, int izq, int m, int der) {
+        int[] L = Arrays.copyOfRange(a, izq, m + 1);
+        int[] R = Arrays.copyOfRange(a, m + 1, der + 1);
+        int i = 0, j = 0, k = izq;
+        while (i < L.length && j < R.length)
+            a[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
+        while (i < L.length) a[k++] = L[i++];
+        while (j < R.length) a[k++] = R[j++];
+    }
+
+    static int[] generar(int n) {
+        Random r = new Random();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) a[i] = r.nextInt(1000000);
+        return a;
+    }
+}
