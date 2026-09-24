@@ -1,0 +1,154 @@
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * Programa simple de Merge Sort.
+ * Le pregunta al usuario cuantos numeros quiere generar,
+ * crea el arreglo aleatorio, lo ordena con Merge Sort
+ * y muestra el tiempo que tardo en ordenarlo.
+ */
+public class MergeSort {
+
+    /**
+     * Metodo principal del programa (punto de entrada).
+     * Se encarga de: generar el arreglo, llamar al ordenamiento,
+     * medir cuanto tiempo tardo y mostrar los resultados en pantalla.
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Cuantos numeros deseas generar? ");
+        int n = 1000000;
+
+        // Genera el arreglo con "n" numeros aleatorios (llama a generarArregloAleatorio)
+        int[] arreglo = generarArregloAleatorio(n);
+        System.out.println("\nArreglo generado (" + n + " numeros).");
+
+        // Se guarda el instante justo antes de empezar a ordenar
+        long inicio = System.nanoTime();
+
+        // Llama al algoritmo Merge Sort para ordenar todo el arreglo
+        // (desde la posicion 0 hasta la ultima posicion del arreglo)
+        mergeSort(arreglo, 0, arreglo.length - 1);
+
+        // Se guarda el instante justo despues de terminar de ordenar
+        long fin = System.nanoTime();
+
+        // Se calcula la diferencia de tiempo y se convierte de nanosegundos a milisegundos
+        double milisegundos = (fin - inicio) / 1_000_000.0;
+        System.out.printf("Tiempo de ordenamiento: %.4f ms%n", milisegundos);
+
+        // Si el arreglo es pequeno, se puede mostrar completo
+        if (n <= 100) {
+            System.out.println("\nArreglo ordenado:");
+            imprimirArreglo(arreglo);
+        } else {
+            System.out.println("\n(El arreglo es muy grande para mostrarlo completo)");
+        }
+
+        sc.close();
+    }
+
+    /**
+     * Funcion principal del algoritmo Merge Sort (fase "DIVIDIR").
+     * Divide recursivamente el arreglo en dos mitades hasta que cada
+     * mitad tenga un solo elemento (caso base: izquierda == derecha),
+     * y luego llama a mezclar() para combinarlas ya ordenadas.
+     *
+     * @param arr       el arreglo que se va a ordenar
+     * @param izquierda indice inicial del segmento a ordenar
+     * @param derecha   indice final del segmento a ordenar
+     */
+    public static void mergeSort(int[] arr, int izquierda, int derecha) {
+        if (izquierda < derecha) {
+            // Calcula el punto medio del segmento actual
+            int medio = izquierda + (derecha - izquierda) / 2;
+
+            // Ordena recursivamente la mitad izquierda
+            mergeSort(arr, izquierda, medio);
+            // Ordena recursivamente la mitad derecha
+            mergeSort(arr, medio + 1, derecha);
+
+            // Combina (mezcla) ambas mitades ya ordenadas en una sola
+            mezclar(arr, izquierda, medio, derecha);
+        }
+    }
+
+    /**
+     * Funcion que combina dos subarreglos ya ordenados en uno solo (fase "COMBINAR").
+     * Compara los elementos de ambas mitades uno por uno y va colocando
+     * el menor de los dos en el arreglo original, hasta que ambas mitades
+     * queden completamente mezcladas en orden.
+     *
+     * @param arr       el arreglo original donde se escribe el resultado final
+     * @param izquierda indice inicial del primer subarreglo (mitad izquierda)
+     * @param medio     indice que separa la mitad izquierda de la derecha
+     * @param derecha   indice final del segundo subarreglo (mitad derecha)
+     */
+    private static void mezclar(int[] arr, int izquierda, int medio, int derecha) {
+        // Tamano de cada una de las dos mitades
+        int n1 = medio - izquierda + 1;
+        int n2 = derecha - medio;
+
+        // Arreglos temporales que guardan una copia de cada mitad
+        int[] izq = new int[n1];
+        int[] der = new int[n2];
+
+        // Se copian los datos del arreglo original a los arreglos temporales
+        System.arraycopy(arr, izquierda, izq, 0, n1);
+        System.arraycopy(arr, medio + 1, der, 0, n2);
+
+        // i recorre el arreglo izquierdo, j recorre el arreglo derecho,
+        // k indica la posicion donde se va escribiendo en el arreglo original
+        int i = 0, j = 0, k = izquierda;
+
+        // Mientras ambos subarreglos tengan elementos por comparar,
+        // se coloca el menor de los dos en el arreglo original
+        while (i < n1 && j < n2) {
+            if (izq[i] <= der[j]) {
+                arr[k++] = izq[i++];
+            } else {
+                arr[k++] = der[j++];
+            }
+        }
+
+        // Si sobraron elementos en el arreglo izquierdo, se copian tal cual
+        // (ya estaban ordenados, no necesitan mas comparaciones)
+        while (i < n1) {
+            arr[k++] = izq[i++];
+        }
+
+        // Si sobraron elementos en el arreglo derecho, se copian tal cual
+        while (j < n2) {
+            arr[k++] = der[j++];
+        }
+    }
+
+    /**
+     * Genera un arreglo de enteros aleatorios.
+     * Cada numero esta en el rango de 0 (incluido) a 1.000.000 (excluido).
+     *
+     * @param tamano cantidad de numeros que va a tener el arreglo
+     * @return el arreglo ya lleno de numeros aleatorios
+     */
+    private static int[] generarArregloAleatorio(int tamano) {
+        Random random = new Random();
+        int[] arreglo = new int[tamano];
+        for (int i = 0; i < tamano; i++) {
+            arreglo[i] = random.nextInt(1_000_000);
+        }
+        return arreglo;
+    }
+
+    /**
+     * Imprime en consola todos los numeros del arreglo, separados por espacio.
+     * Solo se usa cuando el arreglo es pequeno (n <= 100), para no saturar la pantalla.
+     *
+     * @param arr el arreglo que se va a imprimir
+     */
+    private static void imprimirArreglo(int[] arr) {
+        for (int valor : arr) {
+            System.out.print(valor + " ");
+        }
+        System.out.println();
+    }
+}
